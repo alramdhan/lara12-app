@@ -1,5 +1,6 @@
 // import './bootstrap';
 import '../css/main.css';
+import '../css/cifor.css';
 import jQuery from 'jquery';
 import Toastify from 'toastify-js';
 import 'toastify-js/src/toastify.css';

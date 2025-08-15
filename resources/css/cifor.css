@@ -1,0 +1,21 @@
+.cifor-gradient-primary {
+    background: linear-gradient(to bottom right, #2A7B9B 0%, #57C785 40%, #EDDD53 100%);
+    color: white !important;
+}
+
+.cifor-text-gradient {
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(to bottom right, #57C785, #EDDD53);
+    background-clip: text;
+    -webkit-background-clip: text;
+    position: relative;
+    z-index: 1;
+}
+
+.text-info {
+    color: #2A7B9B !important;
+}
+
+.is-invalid {
+    color: red;
+}
