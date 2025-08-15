@@ -29,6 +29,8 @@ class RegisterController extends Controller
             return redirect()->intended('/')->with('toastSuccess', 'Register Succesfully');
         }
 
-        return back()->withErrors(['errorMessage' => 'Email telah digunakan!']);
+        return back()
+            ->withErrors(['errorMessage' => 'Email telah digunakan!'])
+            ->withInput();
     }
 }
