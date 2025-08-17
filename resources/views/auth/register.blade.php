@@ -60,10 +60,6 @@
                           <p class="text-danger text-xs mt-2">{{ $message }}</p>
                       @enderror
                     </div>
-                    <div class="form-check form-switch">
-                      <input class="form-check-input" type="checkbox" id="rememberMe" checked="">
-                      <label class="form-check-label" for="rememberMe">Remember me</label>
-                    </div>
                     <div class="text-center">
                       <button type="submit" class="btn cifor-gradient-primary w-100 mt-4 mb-0">Sign Up</button>
                     </div>

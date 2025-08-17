@@ -4,16 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - Laravel 12</title>
-  @vite(['resources/css/app.css', 'resources/css/main.css', 'resources/css/cifor.css'])
+  @vite(['resources/css/app.css', 'resources/css/cifor.css'])
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 </head>
 <body>
   <main class="main-content mt-0">
     <section>
-      <div class="page-header min-vh-75">
+      <div class="page-header min-h-screen relative">
+        <div class="md:col-span-6 z-0">
+          <div class="oblique h-screen min-w-96 absolute top-0 -right-20 pb-4">
+            <div class="oblique-image bg-cover object-contain h-full" style="background-image:url('../assets/img/banner-login.png');"></div>
+          </div>
+        </div>
         <div class="container">
-          <div class="row">
-            <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto">
+          <div class="grid grid-flow-col grid-cols gap-4">
+            <div class="xl:col-span-3 lg:col-span-4 md:col-span-6">
               <div class="card card-plain mt-8">
                 <div class="card-header pb-0 pt-0 text-left bg-transparent">
                   <h3 class="font-weight-bolder text-info cifor-text-gradient">Welcome back</h3>
@@ -26,7 +31,7 @@
                   @endif
                 </div>
                 <div class="card-body">
-                  <form role="form" method="POST" action="{{ route('doAuthentication') }}" id="form-login">
+                  <form role="form" method="POST" action="{{ route('doAuthentication') }}">
                     @csrf
                     <label>Email</label>
                     <div class="mb-3">
@@ -43,11 +48,11 @@
                       @enderror
                     </div>
                     <div class="form-check form-switch">
-                      <input class="form-check-input" type="checkbox" id="rememberMe" name="rememberMe">
+                      <input class="form-check-input" type="checkbox" id="rememberMe" checked="">
                       <label class="form-check-label" for="rememberMe">Remember me</label>
                     </div>
                     <div class="text-center">
-                      <button type="submit" class="btn bg-gradient-primary text-white w-100 mt-4 mb-0" id="btn-signIn">Sign in</button>
+                      <button type="submit" class="cifor-gradient-primary hover:btn1 text-white w-100 py-2 px-4 rounded">Sign in</button>
                     </div>
                   </form>
                   </div>
@@ -62,27 +67,33 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
-                <div class="oblique position-absolute top-0 h-100 d-md-block d-none me-n8">
-                  <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6" style="background-image:url('../assets/img/banner-login.png'); background-position: right;"></div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </section>
     </main>
 
-    @include('modals.loader')
+    <!-- Toast -->
+    <!-- <div class="max-w-xs bg-gray-100 border border-gray-200 text-sm text-gray-800 rounded-lg dark:bg-white/10 dark:border-white/20 dark:text-white" role="alert" tabindex="-1" aria-labelledby="hs-toast-soft-color-dark-label">
+      <div id="hs-toast-soft-color-dark-label" class="flex p-4">
+        Hello, world! This is a toast message.
+
+        <div class="ms-auto">
+          <button type="button" class="inline-flex shrink-0 justify-center items-center size-5 rounded-lg text-gray-800 opacity-50 hover:opacity-100 focus:outline-hidden focus:opacity-100 dark:text-white" aria-label="Close">
+            <span class="sr-only">Close</span>
+            <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 6 6 18"></path>
+              <path d="m6 6 12 12"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div> -->
+    <!-- End Toast -->
 
     @vite('resources/js/app.js');
     <script src="{{ asset('assets/js/soft-ui-dashboard.min.js?v=1.0.3') }}"></script>
     <!-- <script src="{{ asset('assets/js/core/popper.min.js') }}"></script> -->
-    <script type="module">
-      $('#form-login').on('submit', function() {
-        $('#modal-loader').cfShow();
-      });
-    </script>
     @if(session('toastSuccess'))
     <script type="module">
       Toastify({
