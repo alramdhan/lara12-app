@@ -12,9 +12,8 @@ class AuthController extends Controller
     public function __construct()
     {
         if(Auth::check()) {
-            return redirect('/dashboard');
-        } else {
-            return redirect('/')->withErrors(['errorMessage' => 'Account is unauthenticated.']);
+            $user = Auth::user();
+            return redirect('/dashboard')->with('toastSuccess', 'Welcome Back, '.$user->name);
         }
     }
 
@@ -38,8 +37,9 @@ class AuthController extends Controller
             if(Auth::attempt($credentials, $remember))
             {
                 $request->session()->regenerate();
+                $user = Auth::user();
 
-                return redirect()->intended('/dashboard')->with('toastSuccess', 'Succesfully');
+                return redirect()->intended('/dashboard')->with('toastSuccess', 'Welcome back, '.$user->name);
             }
 
             return back()->withErrors(['errorMessage' => 'Username or Password is wrong!']);
@@ -54,6 +54,6 @@ class AuthController extends Controller
         request()->session()->invalidate();
         request()->session()->regenerateToken();
 
-        return redirect('/')->with('toasstSuccess', 'Logout Successfully');
+        return redirect('/')->with('toastSuccess', 'Logout Successfully');
     }
 }

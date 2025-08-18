@@ -64,7 +64,7 @@
               </div>
               <div class="col-md-6">
                 <div class="oblique position-absolute top-0 h-100 d-md-block d-none me-n8">
-                  <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6" style="background-image:url('../assets/img/banner-login.png'); background-position: right;"></div>
+                  <div class="bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6" style="background-image:url('../assets/img/banner-login.png'); background-position: right; transform: skewX(10deg) !important;"></div>
                 </div>
               </div>
             </div>
@@ -90,7 +90,8 @@
         duration: 3000,
         close: true,
         style: {
-          background: "linear-gradient(to bottom right, #00D09B99, #3DD6C999)"
+          background: "linear-gradient(to bottom right, var(--bs-primary), var(--bs-teal))",
+          borderRadius: '16px',
         }
       }).showToast();
     </script>
@@ -102,7 +103,8 @@
         duration: 3000,
         close: true,
         style: {
-          background: "linear-gradient(to bottom right, #D0009B99, #ED368999)"
+          background: "linear-gradient(to bottom right, #D0009B, #ED3689)",
+          borderRadius: '16px',
         }
       }).showToast();
     </script>

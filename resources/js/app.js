@@ -1,6 +1,7 @@
 // import './bootstrap';
 // import '../css/main.css';
 import '../css/cifor.css';
+import '@fortawesome/fontawesome-free/css/all.css';
 import jQuery from 'jquery';
 import Toastify from 'toastify-js';
 import 'toastify-js/src/toastify.css';
@@ -30,5 +31,19 @@ $('.m-close').on('click', function() {
 $('.cf-modal').on('click', function() {
     if(!this.hasAttribute('backdrop-static')) {
         $(this).cfHide();
+    }
+});
+
+$('.dropdown-toggle').on('click', function() {
+    $('.dropdown-menu').toggle();
+});
+
+window.addEventListener("click", function (e) {
+    if (!e.target.matches(".dropdown-toggle")) {
+        document.querySelectorAll(".dropdown-menu").forEach((menu) => {
+            if (!menu.contains(e.target)) {
+                $(menu).toggle();
+            }
+        });
     }
 });
