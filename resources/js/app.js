@@ -1,4 +1,4 @@
-// import './bootstrap';
+import './bootstrap';
 // import '../css/main.css';
 import '../css/cifor.css';
 import '@fortawesome/fontawesome-free/css/all.css';
