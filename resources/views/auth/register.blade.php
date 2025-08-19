@@ -19,34 +19,34 @@
           @csrf
           <label>Full Name</label>
           <div class="mb-3">
-            <input type="text" class="form-control" name="name" id="name" placeholder="Name" value="admin@softui.com" aria-label="Name" aria-describedby="name-addon">
+            <input type="text" class="form-control" name="name" id="name" placeholder="Name" value="{{ old('name') }}" aria-label="Name" aria-describedby="name-addon">
             @error('name')
-                <p class="text-danger text-xs mt-2">{{ $message }}</p>
+              <p class="text-danger text-xs mt-2">{{ $message }}</p>
             @enderror
           </div>
           <label>Email</label>
           <div class="mb-3">
-            <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="admin@softui.com" aria-label="Email" aria-describedby="email-addon">
+            <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="{{ old('email') }}" aria-label="Email" aria-describedby="email-addon">
             @error('email')
-                <p class="text-danger text-xs mt-2">{{ $message }}</p>
+              <p class="text-danger text-xs mt-2">{{ $message }}</p>
             @enderror
           </div>
           <label>Password</label>
           <div class="mb-3">
-            <input type="password" class="form-control" name="password" id="password" placeholder="Password" value="secret" aria-label="Password" aria-describedby="password-addon">
+            <input type="password" class="form-control" name="password" id="password" placeholder="Password" value="{{ old('password') }}" aria-label="Password" aria-describedby="password-addon">
             @error('password')
-                <p class="text-danger text-xs mt-2">{{ $message }}</p>
+              <p class="text-danger text-xs mt-2">{{ $message }}</p>
             @enderror
           </div>
           <div class="text-center">
-            <button type="submit" class="btn cifor-gradient-primary w-100 mt-4 mb-0 text-white">Sign Up</button>
+            <button type="submit" class="btn bg-gradient-primary w-100 mt-4 mb-0 text-white">Sign Up</button>
           </div>
         </form>
         </div>
         <div class="card-footer text-center pt-0 px-lg-2 px-1">
           <p class="mb-4 text-sm mx-auto">
-              Already have an account
-              <a href="{{ route('login') }}" class="text-info cifor-text-gradient font-weight-bold">Sign In</a>
+            Already have an account
+            <a href="{{ route('login') }}" class="text-info cifor-text-gradient font-weight-bold">Sign In</a>
           </p>
         </div>
       </div>
