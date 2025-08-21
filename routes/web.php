@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
@@ -17,10 +18,10 @@ Route::middleware('auth')->group(function() {
 
     Route::get('/user-profile', [ProfileController::class, 'index'])->name('user-profile');
     Route::get('/prompt-ai', function() {
-        return view('home.page.ai.index');
+        return view('home.page.ai.index')->with('user', Auth::user());
     })->name('prompt-ai');
 });
 
-Route::get('/app', function () {
-    return view('layouts.app');
-})->name('dashboard');
+// Route::get('/app', function () {
+//     return view('layouts.app');
+// })->name('dashboard');

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>@yield('title')</title>
   <link rel="shortcut icon" href="https://www.cifor-icraf.org/wp-content/uploads/2021/04/cropped-cifor-icraf-favicon-01-192x192.png" type="image/x-icon" />
-  @vite(['resources/css/main.css', 'resources/css/cifor.css'])
+  @vite('resources/css/main.css')
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 </head>
 <body>

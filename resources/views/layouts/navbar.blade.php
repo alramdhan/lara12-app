@@ -1,51 +1,238 @@
-<!-- Navbar -->
-<nav class="navbar navbar-main navbar-expand-lg navbar-sticky-top px-0 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
-    <div class="container py-1 px-4 items-center">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-                <li class="breadcrumb-item text-sm text-dark active text-capitalize" aria-current="page">{{ str_replace('-', ' ', Request::path()) }}</li>
-            </ol>
-            <h6 class="font-weight-bolder mb-0 text-capitalize">{{ str_replace('-', ' ', Request::path()) }}</h6>
-        </nav>
-        <div class="collapse navbar-collapse hidden md:flex md:flex-row flex-col mt-sm-0 mt-2 me-md-0 me-sm-4 justify-content-end"> 
-            <div class="ms-md-3 pe-md-3 d-flex align-items-center">
-                <div class="input-group">
-                    <span class="input-group-text text-body">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </span>
-                    <input type="text" class="form-control" placeholder="Type here...">
-                </div>
-            </div>
-            <ul class="navbar-nav justify-content-end">
-                <li class="nav-item flex align-items-center">
-                    <a href="{{ route('logout')}}" class="nav-link text-body font-weight-bold px-0">
-                        <i class="fa-solid fa-user me-sm-1"></i>
-                        <span class="d-sm-inline d-none">Sign Out</span>
+<header class="pc-header">
+    <div class="header-wrapper flex max-sm:px-[15px] px-[25px] grow">
+        <!-- [Mobile Media Block] start -->
+        <div class="me-auto pc-mob-drp">
+            <ul class="inline-flex *:min-h-header-height *:inline-flex *:items-center">
+                <!-- ======= Menu collapse Icon ===== -->
+                <li class="pc-h-item pc-sidebar-collapse max-lg:hidden lg:inline-flex">
+                    <a href="#" class="pc-head-link ltr:!ml-0 rtl:!mr-0" id="sidebar-hide">
+                        <i data-feather="menu"></i>
                     </a>
                 </li>
-                <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-                    <a href="#" class="nav-link text-body p-0" id="iconNavbarSidenav">
-                    <div class="sidenav-toggler-inner">
-                        <i class="sidenav-toggler-line"></i>
-                        <i class="sidenav-toggler-line"></i>
-                        <i class="sidenav-toggler-line"></i>
-                    </div>
+                <li class="pc-h-item pc-sidebar-popup lg:hidden">
+                    <a href="#" class="pc-head-link ltr:!ml-0 rtl:!mr-0" id="mobile-collapse">
+                        <i data-feather="menu"></i>
                     </a>
+                </li>
+                <li class="dropdown pc-h-item">
+                    <a class="pc-head-link dropdown-toggle me-0" data-pc-toggle="dropdown" href="#" role="button"
+                        aria-haspopup="false" aria-expanded="false">
+                        <i data-feather="search"></i>
+                    </a>
+                    <div class="dropdown-menu pc-h-dropdown drp-search">
+                        <form class="px-2 py-1">
+                            <input type="search" class="form-control !border-0 !shadow-none"
+                                placeholder="Search here. . ." />
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- [Mobile Media Block end] -->
+        <div class="ms-auto">
+            <ul class="inline-flex *:min-h-header-height *:inline-flex *:items-center">
+                <li class="dropdown pc-h-item">
+                    <a class="pc-head-link dropdown-toggle me-0" id="change-themes" data-pc-toggle="dropdown" href="#" role="button"
+                        aria-haspopup="false" aria-expanded="false">
+                        <i data-feather="sun"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end pc-h-dropdown">
+                        <a href="#!" class="dropdown-item" onclick="layout_change('dark')">
+                            <i data-feather="moon"></i>
+                            <span>Dark</span>
+                        </a>
+                        <a href="#!" class="dropdown-item" onclick="layout_change('light')">
+                            <i data-feather="sun"></i>
+                            <span>Light</span>
+                        </a>
+                        <a href="#!" class="dropdown-item" onclick="layout_change_default()">
+                            <i data-feather="settings"></i>
+                            <span>Default</span>
+                        </a>
+                    </div>
+                </li>
+                <li class="dropdown pc-h-item">
+                    <a class="pc-head-link dropdown-toggle me-0" data-pc-toggle="dropdown" href="#" role="button"
+                        aria-haspopup="false" aria-expanded="false">
+                        <i data-feather="bell"></i>
+                        <span class="badge bg-success-500 text-white rounded-full z-10 absolute right-0 top-0">3</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-notification dropdown-menu-end pc-h-dropdown p-2">
+                        <div class="dropdown-header flex items-center justify-between py-4 px-5">
+                            <h5 class="m-0">Notifications</h5>
+                            <a href="#!" class="btn btn-link btn-sm">Mark all read</a>
+                        </div>
+                        <div class="dropdown-body header-notification-scroll relative py-4 px-5"
+                            style="max-height: calc(100vh - 215px)">
+                            <p class="text-span mb-3">Today</p>
+                            <div class="card mb-2">
+                                <div class="card-body">
+                                    <div class="flex gap-4">
+                                        <div class="shrink-0">
+                                            <img class="img-radius w-12 h-12 rounded-0"
+                                                src="../assets/images/user/avatar-1.jpg"
+                                                alt="Generic placeholder image" />
+                                        </div>
+                                        <div class="grow">
+                                            <span class="float-end text-sm text-muted">2 min ago</span>
+                                            <h5 class="text-body mb-2">UI/UX Design</h5>
+                                            <p class="mb-0">
+                                                Lorem Ipsum has been the industry's standard dummy text ever since the
+                                                1500s, when an unknown
+                                                printer took a galley of
+                                                type and scrambled it to make a type
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mb-2">
+                                <div class="card-body">
+                                    <div class="flex gap-4">
+                                        <div class="shrink-0">
+                                            <img class="img-radius w-12 h-12 rounded-0"
+                                                src="../assets/images/user/avatar-2.jpg"
+                                                alt="Generic placeholder image" />
+                                        </div>
+                                        <div class="grow">
+                                            <span class="float-end text-sm text-muted">1 hour ago</span>
+                                            <h5 class="text-body mb-2">Message</h5>
+                                            <p class="mb-0">Lorem Ipsum has been the industry's standard dummy text ever
+                                                since the 1500.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-span mb-3 mt-4">Yesterday</p>
+                            <div class="card mb-2">
+                                <div class="card-body">
+                                    <div class="flex gap-4">
+                                        <div class="shrink-0">
+                                            <img class="img-radius w-12 h-12 rounded-0"
+                                                src="../assets/images/user/avatar-3.jpg"
+                                                alt="Generic placeholder image" />
+                                        </div>
+                                        <div class="grow ms-3">
+                                            <span class="float-end text-sm text-muted">2 hour ago</span>
+                                            <h5 class="text-body mb-2">Forms</h5>
+                                            <p class="mb-0">
+                                                Lorem Ipsum has been the industry's standard dummy text ever since the
+                                                1500s, when an unknown
+                                                printer took a galley of
+                                                type and scrambled it to make a type
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mb-2">
+                                <div class="card-body">
+                                    <div class="flex gap-4">
+                                        <div class="shrink-0">
+                                            <img class="img-radius w-12 h-12 rounded-0"
+                                                src="../assets/images/user/avatar-4.jpg"
+                                                alt="Generic placeholder image" />
+                                        </div>
+                                        <div class="grow ms-3">
+                                            <span class="float-end text-sm text-muted">12 hour ago</span>
+                                            <h5 class="text-body mb-2">Challenge invitation</h5>
+                                            <p class="mb-2">
+                                                <strong>Jonny aber</strong>
+                                                invites to join the challenge
+                                            </p>
+                                            <button class="btn btn-sm btn-outline-secondary me-2">Decline</button>
+                                            <button class="btn btn-sm btn-primary">Accept</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mb-2">
+                                <div class="card-body">
+                                    <div class="flex gap-4">
+                                        <div class="shrink-0">
+                                            <img class="img-radius w-12 h-12 rounded-0"
+                                                src="../assets/images/user/avatar-5.jpg"
+                                                alt="Generic placeholder image" />
+                                        </div>
+                                        <div class="grow ms-3">
+                                            <span class="float-end text-sm text-muted">5 hour ago</span>
+                                            <h5 class="text-body mb-2">Security</h5>
+                                            <p class="mb-0">
+                                                Lorem Ipsum has been the industry's standard dummy text ever since the
+                                                1500s, when an unknown
+                                                printer took a galley of
+                                                type and scrambled it to make a type
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center py-2">
+                            <a href="#!"
+                                class="text-danger-500 hover:text-danger-600 focus:text-danger-600 active:text-danger-600">
+                                Clear all Notifications
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li class="dropdown pc-h-item header-user-profile">
+                    <a class="pc-head-link dropdown-toggle arrow-none me-0" data-pc-toggle="dropdown" href="#"
+                        role="button" aria-haspopup="false" data-pc-auto-close="outside" aria-expanded="false">
+                        <i data-feather="user"></i>
+                    </a>
+                    <div
+                        class="dropdown-menu dropdown-user-profile dropdown-menu-end pc-h-dropdown p-2 overflow-hidden">
+                        <div class="dropdown-header flex items-center justify-between py-4 px-5 bg-primary-500">
+                            <div class="flex mb-1 items-center">
+                                <div class="shrink-0">
+                                    <img src="{{ asset('assets/img/avataaars.png')}}" alt="user-image"
+                                        class="w-10 rounded-full" />
+                                </div>
+                                <div class="grow ms-3">
+                                    <h6 class="mb-1 text-white">{{ $user->name }}</h6>
+                                    <span class="text-white">{{ $user->email }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown-body py-4 px-5">
+                            <div class="profile-notification-scroll position-relative"
+                                style="max-height: calc(100vh - 225px)">
+                                <a href="#" class="dropdown-item">
+                                    <span>
+                                        <svg class="pc-icon text-muted me-2 inline-block">
+                                            <use xlink:href="#custom-setting-outline"></use>
+                                        </svg>
+                                        <span>Settings</span>
+                                    </span>
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <span>
+                                        <svg class="pc-icon text-muted me-2 inline-block">
+                                            <use xlink:href="#custom-share-bold"></use>
+                                        </svg>
+                                        <span>Share</span>
+                                    </span>
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <span>
+                                        <svg class="pc-icon text-muted me-2 inline-block">
+                                            <use xlink:href="#custom-lock-outline"></use>
+                                        </svg>
+                                        <span>Change Password</span>
+                                    </span>
+                                </a>
+                                <div class="grid my-3">
+                                    <a href="{{ route('logout') }}" class="btn btn-primary flex items-center justify-center">
+                                        <i data-feather="log-out"></i>
+                                        &nbsp;Logout
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>
     </div>
-</nav>
-
-@push('navbar')
-<script type="module">
-    $(function() {
-        $(document).scroll(function() {
-            var $nav = $('.navbar-sticky-top');
-            $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
-        });
-    });
-</script>
-@endpush
-<!-- End Navbar -->
+</header>
