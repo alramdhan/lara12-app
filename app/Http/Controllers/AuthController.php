@@ -30,7 +30,10 @@ class AuthController extends Controller
      */
     public function doAuthentication(LoginRequest $request)
     {
-        $isEmailExist = User::where('email', $request->email)->first();
+        $isEmailExist = User::where('email', $request->email)
+            ->where('is_status', 1)
+            ->first();
+        
         if($isEmailExist) {
             $credentials = $request->validated();
             $remember = $request->has('rememberMe');
@@ -39,7 +42,7 @@ class AuthController extends Controller
                 $request->session()->regenerate();
                 $user = Auth::user();
 
-                return redirect()->intended('/dashboard')->with('toastSuccess', 'Welcome back, '.$user->name);
+                return redirect()->intended('admin/dashboard')->with('toastSuccess', 'Welcome back, '.$user->name);
             }
 
             return back()->withErrors(['errorMessage' => 'Username or Password is wrong!']);

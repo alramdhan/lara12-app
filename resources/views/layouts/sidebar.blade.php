@@ -28,6 +28,16 @@
             <span class="pc-mtext">Prompt AI</span>
           </a>
         </li>
+        @if($user->role_id == '2')
+        <li class="pc-item">
+          <a href="{{ route('user-management') }}" class="pc-link">
+            <span class="pc-micon">
+              <i data-feather="command"></i>
+            </span>
+            <span class="pc-mtext">User Management</span>
+          </a>
+        </li>
+        @endif
         <li class="pc-item pc-caption">
           <label>CMS</label>
           <i data-feather="feather"></i>
